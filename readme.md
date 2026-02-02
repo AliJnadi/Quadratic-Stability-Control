@@ -10,20 +10,22 @@ This repository provides MATLAB code for simulating and analyzing **quadratic st
 - [MATLAB Code Flow Diagram](#MATLAB-Code-Flow-Diagram)
 - [System Configuration](#system-configuration)  
 - [Running Simulations](#running-simulations)  
-- [Citation](#citation)  
-
+- [Citation](#citation)
+  
 ---
 
 ## System Illustration
 
 The following images illustrate the mass-spring-damper system, showing springs, dampers, masses, and external forces. The view is split into two figures for easier understanding and recognition.
 
+<div align="center">
 <table>
 <tr>
 <td><img src="img/MSD1.png" alt="MSD Linear" width="300"/></td>
 <td><img src="img/MSD2.png" alt="MSD Diagonal" width="300"/></td>
 </tr>
 </table>
+</div> 
 
 ---
 
@@ -38,8 +40,8 @@ To install CVX:
 
 1. Download CVX from [here](http://cvxr.com/cvx/download/).  
 2. Extract the contents and add the folder to your MATLAB path.  
-3. Run `cvx_setup` in MATLAB to complete the installation.  
-
+3. Run `cvx_setup` in MATLAB to complete the installation.
+    
 ---
 
 ## Getting Started
@@ -61,7 +63,7 @@ cd Quadratic-Stability-Control
 test_N_samples
 ```
 
-This will perform simulations for the predefined number of testing samples and display results.  
+This will perform simulations for the predefined number of testing samples and display results. 
 
 ---
 
@@ -69,7 +71,10 @@ This will perform simulations for the predefined number of testing samples and d
 
 The following diagram shows the workflow of the MATLAB code:
 
-<img src="img/Flow%20diagram.png" alt="Flow Diagram" height="350px"/>
+<div align="center">
+<img src="img/Flow%20diagram.png" alt="Flow Diagram" height="600px"/>
+</div>
+
 ---
 
 ## System Configuration
@@ -100,8 +105,8 @@ The main script `test_N_samples.m` runs simulations over the specified number of
 1. Load system parameters from `config.m`.  
 2. Generate sampled system realizations within the specified uncertainty.  
 3. Solve quadratic stability control conditions using CVX.  
-4. Visualize results (optional, included in the script).  
-
+4. Visualize results (optional, included in the script).
+   
 ---
 
 ## Citation [TODO]
