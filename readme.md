@@ -16,12 +16,12 @@ This repository provides MATLAB code for simulating and analyzing **quadratic st
 
 ## System Illustration
 
-The following images illustrate the mass-spring-damper system under study, showing springs, dampers, masses, and external forces.
+The following images illustrate the mass-spring-damper system, showing springs, dampers, masses, and external forces. The view is split into two figures for easier understanding and recognition.
 
 <table>
 <tr>
-<td><img src="img/MSD.png" alt="MSD system" width="300"/></td>
-<td><img src="img/MSD1.png" alt="MSD system alternate view" width="300"/></td>
+<td><img src="img/MSD1.png" alt="MSD Linear" width="300"/></td>
+<td><img src="img/MSD2.png" alt="MSD Diagonal" width="300"/></td>
 </tr>
 </table>
 
@@ -69,7 +69,7 @@ This will perform simulations for the predefined number of testing samples and d
 
 The following diagram shows the workflow of the MATLAB code:
 
-![Flow diagram](img/Flow%20diagram.png)
+<img src="img/Flow%20diagram.png" alt="Flow Diagram" height="350px"/>
 ---
 
 ## System Configuration
