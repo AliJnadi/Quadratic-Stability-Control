@@ -72,7 +72,7 @@ This will perform simulations for the predefined number of testing samples and d
 The following diagram shows the workflow of the MATLAB code:
 
 <div align="center">
-<img src="img/Flow%20diagram.png" alt="Flow Diagram" height="600px"/>
+<img src="img/FlowDiagram.png" alt="Flow Diagram" height="600px"/>
 </div>
 
 ---
