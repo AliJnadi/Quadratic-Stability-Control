@@ -23,7 +23,7 @@ opts = odeset( ...
 );
  
 N = 100;            % Number of samples used for LMI
-N_t = 30;           % Number of samples used for testing
+N_t = 1000;           % Number of samples used for testing
 r = 0.05;           % Sampling radius
 uncert = 0.1;       % Uncertainty  
 seed = 1;           % Random seed
@@ -35,15 +35,17 @@ row = 2;
 col = 2;
 
 force_selector = [1 1 1 1];  % forces applied on m11
+configs = dec2bin(1:(2^length(force_selector)-1)) - '0';
 
 % System nominal parameters
 m_val = ones(row*col,1);
 
 l = 1;
-k = 1;
-mu_l = 1;
 
+k = 1;
 kd = 0.5;
+
+mu_l = 1;
 mu_d = 0.5;
 
 rho_nom = [ ...

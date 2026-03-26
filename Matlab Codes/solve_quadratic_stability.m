@@ -43,7 +43,7 @@ function [K, P, info] = solve_quadratic_stability(system_struct, Q, verbose, mod
     % -----------------------------
     A_r = system_struct.A_r;
     B_r = system_struct.B_r;
-
+    
     A_s = system_struct.A_s;
     B_s = system_struct.B_s;
 
@@ -63,32 +63,46 @@ function [K, P, info] = solve_quadratic_stability(system_struct, Q, verbose, mod
     % -----------------------------
     info = struct();
     info.Ns = Ns;
-
-    % -----------------------------
-    % Solve LMI
-    % -----------------------------
-    tic;
-    cvx_clear;
-
-    if verbose == 0
-        cvx_begin sdp quiet
+    
+    if strcmp(mode, 'LQR')
+        % -----------------------------
+        % Solve LQR
+        % -----------------------------
+        tic;
+        lqr_Q = eye(n);
+        lqr_R = eye(m); 
+        [K, ~, P] = lqr(A_r, B_r, lqr_Q, lqr_R);
+        info.elapsed_time = toc;
+        info.feasible   = true;
+%         info.min_eig_P  = min(P);
+%         info.trace_P    = trace(P);
+        info.norm_K     = norm(K,'fro');
+        
     else
-        cvx_begin sdp
-    end
+        % -----------------------------
+        % Solve LMI
+        % -----------------------------
+        tic;
+        cvx_clear;
 
-        variable P(n,n) symmetric
-        variable L(m,n)
+        if verbose == 0
+            cvx_begin SDP quiet
+        else
+            cvx_begin SDP
+        end
 
-        minimize(0)
+            variable P(n,n) symmetric
+            variable L(m,n)
 
-        subject to
-            % Lyapunov matrix
-            P >= 1e-6 * eye(n);
+            minimize(0);
 
-            % Reference model constraint
-            A_r*P + P*A_r' + B_r*L + L'*B_r' + Q <= 0;
+            subject to
+                % Lyapunov matrix
+                P >= 1e-6 * eye(n);
             
-            if strcmp(mode, 'QSC')
+                % Reference model constraint
+                A_r*P + P*A_r' + B_r*L + L'*B_r' + Q <= 0;
+
                 % Sampled models
                 for i = 1:Ns
                     A_i = A_s(:,:,i);
@@ -96,42 +110,44 @@ function [K, P, info] = solve_quadratic_stability(system_struct, Q, verbose, mod
 
                     A_i*P + P*A_i' + B_i*L + L'*B_i' + Q <= 0;
                 end
+                [ 8*eye(m)   L ;
+                  L'             8*eye(n) ] >= 0
+
+        cvx_end
+        info.elapsed_time = toc;
+        info.cvx_status   = cvx_status;
+        info.cvx_optval   = cvx_optval;
+
+        % -----------------------------
+        % Post-processing
+        % -----------------------------
+        if strcmp(cvx_status,'Solved') || strcmp(cvx_status,'Inaccurate/Solved')
+            K = L / P;
+
+            info.feasible   = true;
+            info.min_eig_P  = min(eig(P));
+            info.trace_P    = trace(P);
+            info.norm_K     = norm(K,'fro');
+
+            if verbose >= 1
+                fprintf('✔ Quadratic stability achieved with %d samples.\n', Ns);
+                fprintf('  Solve time   : %.3f s\n', info.elapsed_time);
             end
 
-    cvx_end
-    info.elapsed_time = toc;
-    info.cvx_status   = cvx_status;
-    info.cvx_optval   = cvx_optval;
+            if verbose >= 2
+                fprintf('  min eig(P)   : %.3e\n', info.min_eig_P);
+                fprintf('  trace(P)     : %.3e\n', info.trace_P);
+                fprintf('  ||K||_F      : %.3e\n', info.norm_K);
+            end
+        else
+            K = [];
+            P = [];
 
-    % -----------------------------
-    % Post-processing
-    % -----------------------------
-    if strcmp(cvx_status,'Solved') || strcmp(cvx_status,'Inaccurate/Solved')
-        K = L / P;
+            info.feasible = false;
 
-        info.feasible   = true;
-        info.min_eig_P  = min(eig(P));
-        info.trace_P    = trace(P);
-        info.norm_K     = norm(K,'fro');
-
-        if verbose >= 1
-            fprintf('✔ Quadratic stability achieved with %d samples.\n', Ns);
-            fprintf('  Solve time   : %.3f s\n', info.elapsed_time);
-        end
-
-        if verbose >= 2
-            fprintf('  min eig(P)   : %.3e\n', info.min_eig_P);
-            fprintf('  trace(P)     : %.3e\n', info.trace_P);
-            fprintf('  ||K||_F      : %.3e\n', info.norm_K);
-        end
-    else
-        K = [];
-        P = [];
-
-        info.feasible = false;
-
-        if verbose >= 1
-            fprintf('✘ Quadratic stability NOT feasible (%s)\n', cvx_status);
+            if verbose >= 1
+                fprintf('✘ Quadratic stability NOT feasible (%s)\n', cvx_status);
+            end
         end
     end
 end
