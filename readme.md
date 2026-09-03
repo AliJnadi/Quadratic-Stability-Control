@@ -101,7 +101,7 @@ You can run the following tests:
 4. [`act_test.m`](Matlab%20Codes/act_test.m) – Shows the effect of the number of actuators.  
    Results will be saved inside the `test_forces` folder.
 
-To generate the plots, simply run `make_all_plots.m` in the corresponding folder or 'plot_forces.m' in 'test_forces' folder.
+To generate the plots, simply run `make_all_plots.m` in the corresponding folder or `plot_forces.m` in `test_forces` folder.
    
 ---
 
