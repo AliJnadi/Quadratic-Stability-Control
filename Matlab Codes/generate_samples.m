@@ -1,4 +1,4 @@
-function samples = generate_samples(z_ref, u_ref, rho_nom, uncert, N, radius, seed, mode)
+function samples = generate_samples(z_ref, u_ref, rho_nom, uncert, N, radius, seed)
 %===========================================================
 % GENERATE_SAMPLES_WITH_INPUT_NUMERIC
 %
@@ -46,12 +46,7 @@ function samples = generate_samples(z_ref, u_ref, rho_nom, uncert, N, radius, se
         %-------------------------------------------------------
         dir = randn(nz,1);
         dir = dir / norm(dir);
-        
-        if mode == 1
-            mag = radius * rand^(1/nz);
-        else
-            mag = radius;   % maximal deviation
-        end
+        mag = radius * rand^(1/nz);
         e   = mag * dir;
 
         z_s = z_ref + e;
@@ -59,12 +54,7 @@ function samples = generate_samples(z_ref, u_ref, rho_nom, uncert, N, radius, se
         %-------------------------------------------------------
         % 2. Sample uncertain parameters
         %-------------------------------------------------------
-        if mode == 1
-            rho_s = rho_nom .* (1 + uncert .* (2*rand(size(rho_nom)) - 1));
-        else
-            rho_s = rho_nom .* (1 + uncert * sign(randn(size(rho_nom))));
-        end        
-        
+        rho_s = rho_nom .* (1 + uncert .* (2*rand(size(rho_nom)) - 1));
 
         %-------------------------------------------------------
         % 3. Store numeric sample
