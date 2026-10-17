@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "Please cite the accompanying manuscript and this repository when using this work."
+type: software
+title: "Sampling-based Quadratic Stability Control"
+authors:
+  - family-names: Jnadi
+    given-names: Ali
+  - family-names: Savin
+    given-names: Sergei
+  - family-names: Kholodov
+    given-names: Yaroslav
+repository-code: "https://github.com/AliJnadi/Quadratic-Stability-Control"
+abstract: "MATLAB code and recorded results for sampling-based quadratic stability control of uncertain nonlinear elastic lattices."
+keywords:
+  - quadratic stability
+  - common Lyapunov function
+  - nonlinear mechanical systems
+  - robust control
+  - MATLAB

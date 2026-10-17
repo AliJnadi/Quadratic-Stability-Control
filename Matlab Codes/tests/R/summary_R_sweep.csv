@@ -1,9 +1,0 @@
-Method,SamplingRadius,MSE_traj_nominal_rho,MSE_traj_random_rho,SS_error_nominal_rho,SS_error_random_rho,Solver time [sec]
-Quadratic stability control,0.025,1.45e-04,6.68e-02,1.34e-08 ± 6.85e-10,3.16e-01 ± 7.52e-03,2.386
-Nominal point LQR,0.025,1.41e-04,1.77e-01,1.34e-08 ± 6.99e-10,5.21e-01 ± 1.61e-02,0.023
-Quadratic stability control,0.05,5.76e-04,6.73e-02,1.35e-08 ± 6.48e-10,3.16e-01 ± 7.72e-03,2.515
-Nominal point LQR,0.05,5.62e-04,1.78e-01,1.35e-08 ± 6.58e-10,5.21e-01 ± 1.61e-02,0.052
-Quadratic stability control,0.075,1.28e-03,6.83e-02,1.35e-08 ± 6.35e-10,3.17e-01 ± 7.94e-03,2.840
-Nominal point LQR,0.075,1.26e-03,1.78e-01,1.35e-08 ± 6.33e-10,5.21e-01 ± 1.61e-02,0.080
-Quadratic stability control,0.1,2.27e-03,7.00e-02,1.35e-08 ± 6.18e-10,3.19e-01 ± 8.17e-03,4.234
-Nominal point LQR,0.1,2.22e-03,1.78e-01,1.35e-08 ± 6.18e-10,5.21e-01 ± 1.61e-02,0.569

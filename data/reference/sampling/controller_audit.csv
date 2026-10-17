@@ -1,0 +1,16 @@
+key,controller,seed,status,accepted,synthesis_time_s
+uniform_volume_seed2,QSC,2,Solved,1,3.071963
+centre_biased_seed2,QSC,2,Solved,1,2.364462291
+boundary_enriched_seed2,QSC,2,Solved,1,2.436001541
+uniform_volume_seed3,QSC,3,Solved,1,2.365662958
+centre_biased_seed3,QSC,3,Solved,1,2.354855541
+boundary_enriched_seed3,QSC,3,Solved,1,2.289346292
+uniform_volume_seed4,QSC,4,Solved,1,2.296804833
+centre_biased_seed4,QSC,4,Solved,1,2.287416667
+boundary_enriched_seed4,QSC,4,Solved,1,2.270129291
+uniform_volume_seed5,QSC,5,Solved,1,2.35742925
+centre_biased_seed5,QSC,5,Solved,1,2.287960375
+boundary_enriched_seed5,QSC,5,Solved,1,2.322065458
+uniform_volume_seed6,QSC,6,Solved,1,2.61219675
+centre_biased_seed6,QSC,6,Solved,1,2.298090708
+boundary_enriched_seed6,QSC,6,Solved,1,2.279401083

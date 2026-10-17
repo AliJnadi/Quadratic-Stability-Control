@@ -1,0 +1,13 @@
+key,controller,seed,status,accepted,synthesis_time_s
+QSC_seed2,QSC,2,Solved,1,3.071963
+QSC_seed3,QSC,3,Solved,1,2.365662958
+QSC_seed4,QSC,4,Solved,1,2.296804833
+QSC_seed5,QSC,5,Solved,1,2.35742925
+QSC_seed6,QSC,6,Solved,1,2.61219675
+Hinf_seed2,Hinf,2,Solved,1,34.58881725
+Hinf_seed3,Hinf,3,Solved,1,27.558488959
+Hinf_seed4,Hinf,4,Solved,1,38.356314625
+Hinf_seed5,Hinf,5,Solved,1,31.533833708
+Hinf_seed6,Hinf,6,Solved,1,34.990345
+LQR_seed0,LQR,0,Solved,1,0.031799625
+LQR_weighted_seed0,LQR_weighted,0,Solved,1,0.015235959

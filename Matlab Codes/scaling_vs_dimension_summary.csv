@@ -1,4 +1,0 @@
-sRow,sCol,StateDim,N_star,SynthTime_at_Nstar_sec,WorstMargin_at_Nstar
-2,2,16,25,0.861200458,-0.00218737843094005
-3,3,36,50,12.94370075,-0.0037042537839384
-4,4,64,NaN,NaN,NaN

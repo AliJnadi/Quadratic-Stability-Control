@@ -1,0 +1,10 @@
+stage,trial_records,completed,incomplete
+comparison,4764,4764,0
+diagnostic,36000,36000,0
+force_resolution,48,48,0
+radius_settling,64,64,0
+sampling,1980,1980,0
+saturation,14292,14292,0
+saturation_settling,547,547,0
+settling,312,312,0
+sweeps,116000,116000,0
